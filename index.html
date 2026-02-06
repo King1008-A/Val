@@ -1,315 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For Aaditi 💖</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>For Aaditi 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+<style>
+* { box-sizing: border-box; font-family: Poppins, sans-serif; }
 
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ffb3c6, #ffe5ec);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg,#ffb3c6,#ffe5ec);
+  overflow: hidden;
+}
 
-    .card {
-      background: white;
-      padding: 36px 32px;
-      border-radius: 26px;
-      text-align: center;
-      width: 90%;
-      max-width: 440px;
-      box-shadow: 0 20px 45px rgba(0,0,0,0.15);
-      position: relative;
-      z-index: 2;
-    }
+.page {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  padding: 40px 25px;
+  text-align: center;
+  animation: fade 0.6s ease;
+}
 
-    h1 {
-      color: #ff4d6d;
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
+.page.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-    p {
-      color: #555;
-      font-size: 17px;
-      margin-bottom: 14px;
-    }
+@keyframes fade {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    .photos {
-      display: flex;
-      overflow: hidden;
-      border-radius: 18px;
-      margin-bottom: 22px;
-    }
+button {
+  padding: 14px 30px;
+  border-radius: 999px;
+  border: none;
+  font-size: 18px;
+  background: #ff4d6d;
+  color: white;
+  cursor: pointer;
+  margin-top: 25px;
+}
 
-    .photos img {
-      width: 100%;
-      flex-shrink: 0;
-      animation: slide 18s infinite;
-    }
+.photos {
+  display: flex;
+  overflow: hidden;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 360px;
+}
 
-    @keyframes slide {
-      0% { transform: translateX(0); }
-      30% { transform: translateX(0); }
-      40% { transform: translateX(-100%); }
-      70% { transform: translateX(-100%); }
-      80% { transform: translateX(-200%); }
-      100% { transform: translateX(-200%); }
-    }
+.photos img {
+  width: 100%;
+  animation: slide 18s infinite;
+}
 
-    .buttons {
-      position: relative;
-      height: 140px;
-      margin-top: 10px;
-    }
+@keyframes slide {
+  0%,30% { transform: translateX(0); }
+  40%,70% { transform: translateX(-100%); }
+  80%,100% { transform: translateX(-200%); }
+}
 
-    button {
-      padding: 14px 30px;
-      font-size: 18px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      position: absolute;
-      transition: transform 0.25s ease;
-    }
+.gifts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 20px;
+}
 
-    #yesBtn {
-      background: #ff4d6d;
-      color: white;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 0;
-    }
+.gift {
+  background: white;
+  padding: 22px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 36px;
+  transition: transform 0.2s;
+}
 
-    #yesBtn:hover {
-      transform: translateX(-50%) scale(1.05);
-    }
+.gift:hover { transform: scale(1.05); }
 
-    #noBtn {
-      background: #f1f1f1;
-      color: #666;
-      left: 18%;
-      top: 0;
-    }
+.gift small {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+}
 
-    .final {
-      display: none;
-    }
+.locked {
+  opacity: 0.5;
+  pointer-events: none;
+}
 
-    .hearts {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-    }
+#noBtn {
+  background: #eee;
+  color: #555;
+  position: absolute;
+}
 
-    .heart {
-      position: absolute;
-      font-size: 22px;
-      animation: floatUp 5s linear forwards;
-    }
+.buttonsHidden {
+  opacity: 0;
+  pointer-events: none;
+}
 
-    @keyframes floatUp {
-      from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(-100vh); opacity: 0; }
-    }
+.letter {
+  background: #fff5f8;
+  padding: 30px;
+  border-radius: 20px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 21px;
+  line-height: 1.7;
+  max-width: 380px;
+  text-align: left;
+}
 
-    .letter {
-      margin-top: 22px;
-    }
+.hearts span {
+  position: fixed;
+  font-size: 22px;
+  animation: float 5s linear forwards;
+}
 
-    .envelope {
-      background: #ffe0e9;
-      padding: 18px;
-      border-radius: 18px;
-      font-weight: 500;
-      color: #ff4d6d;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .envelope:hover {
-      transform: scale(1.04);
-    }
-
-    .letter-content {
-      display: none;
-      background: #fff5f8;
-      padding: 28px;
-      margin-top: 18px;
-      border-radius: 18px;
-      text-align: left;
-      font-family: 'Dancing Script', cursive;
-      font-size: 20px;
-      line-height: 1.7;
-      letter-spacing: 0.4px;
-      animation: fadeIn 0.6s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+@keyframes float {
+  from { bottom: 0; opacity: 1; }
+  to { bottom: 100vh; opacity: 0; }
+}
+</style>
 </head>
+
 <body>
 
-<audio id="bgMusic" autoplay loop>
+<audio id="music" autoplay loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="card" id="card">
-  <h1>Hey Aaditi 💖</h1>
+<!-- PAGE 1 -->
+<div class="page active">
+  <h1>Hey Aaditi 👀</h1>
+  <p>I made something just for you.</p>
+  <button onclick="next()">Okay</button>
+</div>
 
+<!-- PAGE 2 -->
+<div class="page">
+  <h1>Promise me something</h1>
+  <p>Go slowly. This isn’t a rush.</p>
+  <button onclick="next()">I promise</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <h1>This is us 💕</h1>
   <div class="photos">
     <img src="photo1.jpg">
     <img src="photo2.jpg">
     <img src="photo3.jpg">
   </div>
+  <p style="margin-top:15px;">
+    Especially that morning when I made coffee for you  
+    and we drank it together in bed.
+  </p>
+  <button onclick="next()">Keep going</button>
+</div>
 
-  <p>Will you be my Valentine?</p>
+<!-- PAGE 4 GIFTS -->
+<div class="page">
+  <h1>I got you some gifts 🎁</h1>
+  <p>Open all of them.</p>
 
-  <div class="buttons">
-    <button id="yesBtn">Yes 💕</button>
+  <div class="gifts">
+    <div class="gift" onclick="openGift(this,'flowers.png','For my princess 🌸')">🎁</div>
+    <div class="gift" onclick="openGift(this,'hug.gif','Whenever you need one')">🎁</div>
+    <div class="gift" onclick="openGift(this,'kiss.gif','Unlimited supply 😌')">🎁</div>
+    <div class="gift" onclick="openText(this)">🎁</div>
+  </div>
+
+  <button id="giftNext" class="locked">Next</button>
+</div>
+
+<!-- PAGE 5 QUESTION -->
+<div class="page">
+  <h1>Take a breath.</h1>
+  <p style="margin-top:10px;">Will you be my Valentine?</p>
+
+  <div id="buttonsWrap" class="buttonsHidden">
+    <button onclick="yes()">Yes 💕</button>
     <button id="noBtn">No 🙄</button>
   </div>
 </div>
 
-<div class="card final" id="finalCard">
-  <h1>One more thing 💌</h1>
-  <p>I wanted you to read this slowly.</p>
+<!-- PAGE 6 -->
+<div class="page">
+  <h1>I knew it ❤️</h1>
+  <p>You still owe me 8cr though.</p>
+  <button onclick="next()">💌</button>
+</div>
 
+<!-- PAGE 7 LETTER -->
+<div class="page">
   <div class="letter">
-    <div class="envelope" onclick="openLetter()">✉️ Open my letter</div>
-    <div class="letter-content" id="letterContent">
+    <p>My dearest Aaditi,</p>
 
-      <p>My dearest Aaditi,</p>
+    <p>
+    You became my safe place without trying.
+    My princess.
+    My bubba.
+    Loving you feels calm, warm, and right.
+    </p>
 
-      <p>
-      I don’t think love is loud.
-      I think it’s quiet and steady,
-      and somehow it always finds its way back to you.
-      That’s how you feel to me.
-      </p>
+    <p>
+    I don’t promise perfection.
+    I promise presence.
+    Choosing you, in this moment.
+    </p>
 
-      <p>
-      You slipped into my life so naturally that I didn’t notice
-      when everything started to feel lighter,
-      warmer,
-      more like home.
-      Somewhere along the way,
-      you became my safe place,
-      my princess,
-      my bubba.
-      </p>
+    <p>
+    I can already picture us laughing about this someday.
+    </p>
 
-      <p>
-      I love the way you exist in my world.
-      In the small moments.
-      In the pauses.
-      In the way you make me smile without trying.
-      Loving you feels easy,
-      and at the same time,
-      it feels deeply special.
-      </p>
+    <p>Will you be my Valentine?</p>
 
-      <p>
-      I don’t promise perfection.
-      I promise presence.
-      Choosing you,
-      showing up for you,
-      and loving you in all the quiet ways that last.
-      </p>
-
-      <p>
-      So this is me,
-      heart open,
-      choosing you again.
-      </p>
-
-      <p>Will you be my Valentine?</p>
-
-      <p>Always yours,<br>❤️</p>
-
-    </div>
+    <p>
+    Always yours,<br>
+    Idiot ❤️
+    </p>
   </div>
 </div>
 
-<div class="hearts" id="hearts"></div>
-
 <script>
-  const music = document.getElementById("bgMusic");
-  music.volume = 0;
-  let targetVolume = 0.18;
+let page = 0;
+const pages = document.querySelectorAll('.page');
 
-  music.addEventListener("play", () => {
-    let vol = 0;
-    const fade = setInterval(() => {
-      if (vol >= targetVolume) {
-        clearInterval(fade);
-      } else {
-        vol += 0.01;
-        music.volume = vol;
-      }
-    }, 200);
-  });
+function next() {
+  pages[page].classList.remove('active');
+  page++;
+  pages[page].classList.add('active');
 
-  const noBtn = document.getElementById("noBtn");
-  const yesBtn = document.getElementById("yesBtn");
-  const card = document.getElementById("card");
-  const finalCard = document.getElementById("finalCard");
-  const hearts = document.getElementById("hearts");
-
-  let noCount = 0;
-
-  function moveNo() {
-    noCount++;
-    if (noCount >= 4) {
-      noBtn.style.display = "none";
-      return;
-    }
-    noBtn.style.left = Math.random() * 70 + "%";
-    noBtn.style.top = Math.random() * 70 + "%";
+  if (page === 4) {
+    setTimeout(() => {
+      document.getElementById("buttonsWrap").classList.remove("buttonsHidden");
+    }, 1500);
   }
+}
 
-  noBtn.addEventListener("mouseenter", moveNo);
-  noBtn.addEventListener("click", moveNo);
+let giftsOpened = 0;
 
-  yesBtn.addEventListener("click", () => {
-    card.style.display = "none";
-    finalCard.style.display = "block";
-    startHearts();
-  });
+function openGift(box, img, text) {
+  box.innerHTML = `<img src="${img}" width="90"><small>${text}</small>`;
+  box.onclick = null;
+  giftsOpened++;
+  checkGifts();
+}
 
-  function startHearts() {
-    setInterval(() => {
-      const h = document.createElement("div");
-      h.className = "heart";
-      h.textContent = "❤️";
-      h.style.left = Math.random() * 100 + "vw";
-      h.style.bottom = "-20px";
-      hearts.appendChild(h);
-      setTimeout(() => h.remove(), 5000);
-    }, 450);
+function openText(box) {
+  box.innerHTML = `<div style="font-size:16px;">A lifetime of love 💖<br><small>You earn it after 8cr 😉</small></div>`;
+  box.onclick = null;
+  giftsOpened++;
+  checkGifts();
+}
+
+function checkGifts() {
+  if (giftsOpened === 4) {
+    const btn = document.getElementById("giftNext");
+    btn.classList.remove("locked");
+    btn.onclick = next;
   }
+}
 
-  function openLetter() {
-    document.getElementById("letterContent").style.display = "block";
-    targetVolume = 0.08;
-    music.volume = targetVolume;
+const noBtn = document.getElementById('noBtn');
+noBtn.addEventListener('mouseenter', () => {
+  noBtn.style.left = Math.random() * 70 + "%";
+  noBtn.style.top = Math.random() * 70 + "%";
+});
+
+function yes() {
+  next();
+  const music = document.getElementById("music");
+  music.volume = 0.08;
+
+  for (let i=0;i<30;i++) {
+    const h = document.createElement('span');
+    h.textContent = "❤️";
+    h.style.left = Math.random()*100+"vw";
+    h.className = "hearts";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
   }
+}
+
+const music = document.getElementById("music");
+music.volume = 0;
+let v = 0;
+const fade = setInterval(()=>{
+  if(v>=0.18) clearInterval(fade);
+  else { v+=0.01; music.volume=v; }
+},200);
 </script>
 
 </body>
